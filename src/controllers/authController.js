@@ -21,7 +21,7 @@ exports.login = (req, res) => {
         return res.status(401).send('Invalid credentials');
     }
 
-    const token = jwt.sign({ id: user.id}, process.env.SECRET_KEY, {
+    const token = jwt.sign({ id: user.id}, '89648b10404191298519717fade96d09', {
         expiresIn: 86400 // 1 hora
     });
 
@@ -35,7 +35,7 @@ exports.verifyToken = (req, res, next) => {
         return res.status(401).send('No token provided');
     }
 
-    jwt.verify(token, 'secret-key', (err, decoded) => {
+    jwt.verify(token, '89648b10404191298519717fade96d09', (err, decoded) => {
         if (err) {
             return res.status(500).send('Failed to authenticate token');
         }
