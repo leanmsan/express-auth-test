@@ -22,7 +22,7 @@ exports.login = (req, res) => {
     }
 
     const token = jwt.sign({ id: user.id}, process.env.SECRET_KEY, {
-        expiresIn: 3600 // 1 hora
+        expiresIn: 86400 // 1 hora
     });
 
     res.status(200).send({ auth: true, token });
